@@ -102,11 +102,7 @@ MoveToDeskAndGoBack() {
 }
 
 ToggleInspect() {
-    TempFun() {
-        Click(inspect_pos*)
-    }
-
-    MouseWrapper(TempFun)
+    ClickReturn(inspect_pos)
 }
 
 Detain() {
@@ -128,19 +124,11 @@ MoveToTray() {
 }
 
 Interrogate() {
-    TempFun() {
-        Click(interrogate_pos*)
-    }
-
-    MouseWrapper(TempFun)
+    ClickReturn(interrogate_pos)
 }
 
 Search() {
-    TempFun() {
-        Click(search_pos*)
-    }
-
-    MouseWrapper(TempFun)
+    ClickReturn(search_pos)
 }
 
 Fingerprint() {
