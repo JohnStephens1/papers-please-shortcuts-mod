@@ -148,8 +148,16 @@ Fingerprint() {
 
 
 ; keybinds
+w:: {
+    Interrogate()
+}
+
 tab:: {
     ToggleStamp()
+}
+
+q:: {
+    CallNext()
 }
 
 a:: {
@@ -164,24 +172,12 @@ e:: {
     HandToPerson()
 }
 
-q:: {
-    CallNext()
-}
-
 ^s:: {
     MoveToDesk()
 }
 
 s:: {
     MoveToTray()
-}
-
-w:: {
-    Interrogate()
-}
-
-Space:: {
-    ToggleInspect()
 }
 
 
