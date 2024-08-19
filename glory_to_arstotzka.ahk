@@ -1,3 +1,4 @@
+; variables
 my_screen_dim := [1920, 1080]
 current_screen_dim := [A_ScreenWidth, A_ScreenHeight]
 
@@ -18,6 +19,7 @@ search_pos := Relativy_pos([1300, 400])
 fingerprint_pos := Relativy_pos([1600, 400])
 fingerprint_output_pos := Relativy_pos([1500, 700])
 
+; screen helper functions
 Relativy_pos(pos) {
     return [
         pos[1]*current_screen_dim[1]/my_screen_dim[1],
@@ -33,7 +35,7 @@ PrintRelativeScreenDimensions(){
     )
 }
 
-
+; helper functions
 MouseWrapper(Fun) {
     MouseGetPos &initial_mouse_pos_x, &initial_mouse_pos_y
     Fun()
@@ -49,16 +51,16 @@ ClickReturn(click_pos) {
     MouseWrapper(TempFun)
 }
 
+ClickDownMoveLetGo(pos) {
+    Click "Down"
+    Sleep 50
+    SendEvent Format("{Click {1}, {2}}", pos*)
+    Click "Up"
+}
+
+; game logic
 ToggleStamp() {
     ClickReturn(stamp_pos)
-}
-
-Deny() {
-    Stamp(deny_pos)
-}
-
-Approve() {
-    Stamp(approve_pos)
 }
 
 Stamp(pos) {
@@ -70,11 +72,12 @@ Stamp(pos) {
     ToggleStamp()
 }
 
-ClickDownMoveLetGo(pos) {
-    Click "Down"
-    Sleep 50
-    SendEvent Format("{Click {1}, {2}}", pos*)
-    Click "Up"
+Deny() {
+    Stamp(deny_pos)
+}
+
+Approve() {
+    Stamp(approve_pos)
 }
 
 HandToPerson() {
@@ -105,16 +108,6 @@ ToggleInspect() {
     ClickReturn(inspect_pos)
 }
 
-Detain() {
-    TempFun() {
-        Click(detain_pos*)
-        sleep(50)
-        Click(lever_pos*)
-    }
-
-    MouseWrapper(TempFun)
-}
-
 MoveToTray() {
     TempFun() {
         ClickDownMoveLetGo(tray_pos)
@@ -125,6 +118,17 @@ MoveToTray() {
 
 Interrogate() {
     ClickReturn(interrogate_pos)
+}
+
+
+Detain() {
+    TempFun() {
+        Click(detain_pos*)
+        sleep(50)
+        Click(lever_pos*)
+    }
+
+    MouseWrapper(TempFun)
 }
 
 Search() {
@@ -140,9 +144,10 @@ Fingerprint() {
     }
 
     MouseWrapper(TempFun)
-
 }
 
+
+; keybinds
 tab:: {
     ToggleStamp()
 }
