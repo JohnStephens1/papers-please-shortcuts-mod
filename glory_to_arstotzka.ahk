@@ -12,7 +12,8 @@ inspect_pos := Relativy_pos([1750, 1000])
 lever_pos := Relativy_pos([600, 400]) ; not used in isolated key
 tray_pos := Relativy_pos([400, 800])
 next_pos := Relativy_pos([600, 300])
-interrogate_pos := Relativy_pos([400, 900]) ; unused
+interrogate_pos := Relativy_pos([400, 900])
+; add stamp reason shenanigans
 
 detain_pos := Relativy_pos([1000, 400])
 search_pos := Relativy_pos([1300, 400])
