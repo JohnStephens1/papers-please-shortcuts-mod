@@ -53,6 +53,8 @@ There are several shortcuts to make many of the actions in the game a lot more s
 - shift-escape: Suspend - toggles the mod on or off, incase you want to type something while keeping the mod active
 - ctrl-escape: ExitApp - quits the mod
 
+<br>
+
 Feel free to edit the shortcuts and scripts to your liking if you know what you're doing.
 
 ### How to install
