@@ -9,7 +9,7 @@ stamp_pos := Relativy_pos([1800, 530])
 person_pos := Relativy_pos([400, 600])
 desk_pos := Relativy_pos([1200, 700])
 inspect_pos := Relativy_pos([1750, 1000])
-lever_pos := Relativy_pos([600, 400]) ; not used in isolated key
+shutter_pos := Relativy_pos([600, 400])
 tray_pos := Relativy_pos([400, 800])
 next_pos := Relativy_pos([600, 300])
 interrogate_pos := Relativy_pos([400, 900])
@@ -23,6 +23,7 @@ fingerprint_from_person_pos := Relativy_pos([370, 800])
 fingerprint_goal_pos := Relativy_pos([1200, 550])
 fingerprint_result_pos := Relativy_pos([1200, 800])
 fingerprint_output_pos := Relativy_pos([1500, 700])
+
 
 ; screen helper functions
 Relativy_pos(pos) {
@@ -39,6 +40,7 @@ PrintRelativeScreenDimensions(){
         Integer(Relativy_pos(current_screen_dim)[2])
     )
 }
+
 
 ; helper functions
 MouseWrapper(Fun) {
@@ -62,6 +64,7 @@ ClickDownMoveLetGo(pos) {
     SendEvent Format("{Click {1}, {2}}", pos*)
     Click "Up"
 }
+
 
 ; game logic
 ToggleStamp() {
@@ -125,6 +128,19 @@ Interrogate() {
     ClickReturn(interrogate_pos)
 }
 
+ToggleShutter() {
+    Click(shutter_pos*)
+}
+
+ToggleShutterAndReturn() {
+    TempFun() {
+        ToggleShutter()
+    }
+
+    MouseWrapper(TempFun)
+}
+
+
 StampReason() {
     ClickDownMoveLetGo(reason_stamp_pos)
     Sleep(100)
@@ -149,7 +165,7 @@ Detain() {
     TempFun() {
         Click(detain_pos*)
         sleep(50)
-        Click(lever_pos*)
+        ToggleShutter()
     }
 
     MouseWrapper(TempFun)
@@ -159,12 +175,12 @@ AdvancedDetain() {
     TempFun() {
         Click(detain_pos*)
         sleep(50)
-        Click(lever_pos*)
+        ToggleShutter()
     }
 
     MouseWrapper(TempFun)
     Sleep(8000)
-    MouseWrapper(CallNext)
+    CallNext()
 }
 
 Search() {
@@ -182,6 +198,17 @@ Fingerprint() {
     MouseWrapper(TempFun)
 }
 
+CompareFingerprint() {
+    MouseMove(fingerprint_from_person_pos[1], fingerprint_from_person_pos[2], 0)
+    ClickDownMoveLetGo(fingerprint_goal_pos)
+    Sleep(50)
+    ToggleInspect()
+    Sleep(50)
+    Click(fingerprint_goal_pos*)
+    Sleep(100)
+    Click(fingerprint_result_pos*)
+}
+
 AdvancedFingerprint() {
     TempFun() {
         Click(fingerprint_pos*)
@@ -189,19 +216,12 @@ AdvancedFingerprint() {
         MouseMove(fingerprint_output_pos[1], fingerprint_output_pos[2], 0)
         HandToPerson()
         Sleep(5000)
-        MouseMove(fingerprint_from_person_pos[1], fingerprint_from_person_pos[2], 0)
-        ClickDownMoveLetGo(fingerprint_goal_pos)
-        Sleep(50)
-        ToggleInspect()
-        Sleep(50)
-        Click(fingerprint_goal_pos*)
-        Sleep(100)
-        Click(fingerprint_result_pos*)
+        CompareFingerprint()
     }
 
     MouseWrapper(TempFun)
-
 }
+
 
 ; keybinds
 w:: {
@@ -234,6 +254,10 @@ e:: {
 
 s:: {
     MoveToTray()
+}
+
+t:: {
+    ToggleShutterAndReturn()
 }
 
 
