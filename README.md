@@ -32,6 +32,8 @@ There are several shortcuts to make many of the actions in the game a lot more s
 - s: MoveToTray - moves the currently hovered document to the tray at the bottom left
 - t: ToggleShutterAndReturn - toggles the shutter and returns the mouse to its original position
 
+<br>
+
 - y: Reason - denies and provides reason to the currently hovered over document
 - x: Detain - detains the current individual
 - ctrl+x: AdvancedDetain - detains the current individual and calls in the next person afterwards (provided they don't have special dialogue)
@@ -39,10 +41,14 @@ There are several shortcuts to make many of the actions in the game a lot more s
 - v: Fingerprint - takes the fingerprint from the current person
 - ctrl+v: AdvancedFingerprint - takes the fingerprint from the current person and automatically compares it to the printout
 
+<br>
+
 - F1: ManualInInspectModeToggle - toggles the ´in_inspect_mode´ variable. Hit once if the following shortcuts don't work.
 - 1: CompareWithTime - compare the currently hovered value with the time
 - 2: CompareWithPerson - compare the currently hovered value with our person
 - 3: CompareWithWeight - compare the currently hovered value with their weight
+
+<br>
 
 - shift-escape: Suspend - toggles the mod on or off, incase you want to type something while keeping the mod active
 - ctrl-escape: ExitApp - quits the mod
