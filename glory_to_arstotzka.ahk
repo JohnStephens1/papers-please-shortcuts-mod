@@ -2,8 +2,8 @@
 my_screen_dim := [1920, 1080]
 current_screen_dim := [A_ScreenWidth, A_ScreenHeight]
 
-approve_pos := Relativy_pos([1650, 500])
-deny_pos := Relativy_pos([1300, 500])
+approve_pos := Relativy_pos([1550, 600])
+deny_pos := Relativy_pos([1300, 600])
 stamp_pos := Relativy_pos([1800, 530])
 
 person_pos := Relativy_pos([400, 600])
@@ -13,8 +13,9 @@ lever_pos := Relativy_pos([600, 400]) ; not used in isolated key
 tray_pos := Relativy_pos([400, 800])
 next_pos := Relativy_pos([600, 300])
 interrogate_pos := Relativy_pos([400, 900])
-; add stamp reason shenanigans
 
+reason_pos := Relativy_pos([800, 400])
+reason_stamp_pos := Relativy_pos([800, 600])
 detain_pos := Relativy_pos([1000, 400])
 search_pos := Relativy_pos([1300, 400])
 fingerprint_pos := Relativy_pos([1600, 400])
@@ -65,7 +66,7 @@ ToggleStamp() {
 }
 
 Stamp(pos) {
-    ClickDownMoveLetGo([pos[1], pos[2]+100])
+    ClickDownMoveLetGo([pos[1], pos[2]])
     Sleep 20
     ToggleStamp()
     Sleep 300
@@ -121,6 +122,25 @@ Interrogate() {
     ClickReturn(interrogate_pos)
 }
 
+StampReason() {
+    ClickDownMoveLetGo(reason_stamp_pos)
+    Sleep(100)
+
+    ToggleStamp()
+    Sleep(350)
+
+    Click(reason_stamp_pos*)
+    Sleep(100)
+
+    ToggleStamp()
+}
+
+Reason() {
+    Deny()
+    Sleep(50)
+
+    StampReason()
+}
 
 Detain() {
     TempFun() {
@@ -181,6 +201,10 @@ s:: {
     MoveToTray()
 }
 
+
+y:: {
+    Reason()
+}
 
 x:: {
     Detain()
