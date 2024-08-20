@@ -43,7 +43,7 @@ There are several shortcuts to make many of the actions in the game a lot more s
 
 <br>
 
-- F1: ManualInInspectModeToggle - toggles the ´in_inspect_mode´ variable. Hit once if the following shortcuts don't work.
+- F1: ManualInInspectModeToggle - toggles the *in_inspect_mode* variable. Hit once if the following shortcuts don't work.
 - 1: CompareWithTime - compare the currently hovered value with the time
 - 2: CompareWithPerson - compare the currently hovered value with our person
 - 3: CompareWithWeight - compare the currently hovered value with their weight
