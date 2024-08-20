@@ -224,6 +224,10 @@ AdvancedFingerprint() {
 
 
 ; keybinds
+Space:: {
+    ToggleInspect()
+}
+
 w:: {
     Interrogate()
 }
