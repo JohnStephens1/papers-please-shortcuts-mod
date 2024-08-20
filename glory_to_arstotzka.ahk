@@ -130,6 +130,9 @@ MoveToTray() {
 }
 
 Interrogate() {
+    if in_inspect_mode {
+        global in_inspect_mode := false
+    }
     ClickReturn(interrogate_pos)
 }
 
