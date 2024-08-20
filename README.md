@@ -13,6 +13,8 @@
 
 This mod adds several shortcuts to the game "Papers Please".
 
+I've created a [short video](https://www.youtube.com/watch?v=BSwoeJL1kt4) showcasing many of the features the mod provides.
+
 Unfortunately the source code isn't available and there isn't a modding API available, therefore I had to make due with an AHK script and abide by its limitations.
 
 ### How it works
