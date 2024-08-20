@@ -19,6 +19,9 @@ reason_stamp_pos := Relativy_pos([800, 600])
 detain_pos := Relativy_pos([1000, 400])
 search_pos := Relativy_pos([1300, 400])
 fingerprint_pos := Relativy_pos([1600, 400])
+fingerprint_from_person_pos := Relativy_pos([370, 800])
+fingerprint_goal_pos := Relativy_pos([1200, 550])
+fingerprint_result_pos := Relativy_pos([1200, 800])
 fingerprint_output_pos := Relativy_pos([1500, 700])
 
 ; screen helper functions
@@ -152,6 +155,18 @@ Detain() {
     MouseWrapper(TempFun)
 }
 
+AdvancedDetain() {
+    TempFun() {
+        Click(detain_pos*)
+        sleep(50)
+        Click(lever_pos*)
+    }
+
+    MouseWrapper(TempFun)
+    Sleep(8000)
+    MouseWrapper(CallNext)
+}
+
 Search() {
     ClickReturn(search_pos)
 }
@@ -167,6 +182,26 @@ Fingerprint() {
     MouseWrapper(TempFun)
 }
 
+AdvancedFingerprint() {
+    TempFun() {
+        Click(fingerprint_pos*)
+        Sleep(600)
+        MouseMove(fingerprint_output_pos[1], fingerprint_output_pos[2], 0)
+        HandToPerson()
+        Sleep(5000)
+        MouseMove(fingerprint_from_person_pos[1], fingerprint_from_person_pos[2], 0)
+        ClickDownMoveLetGo(fingerprint_goal_pos)
+        Sleep(50)
+        ToggleInspect()
+        Sleep(50)
+        Click(fingerprint_goal_pos*)
+        Sleep(100)
+        Click(fingerprint_result_pos*)
+    }
+
+    MouseWrapper(TempFun)
+
+}
 
 ; keybinds
 w:: {
@@ -210,12 +245,20 @@ x:: {
     Detain()
 }
 
+^x:: {
+    AdvancedDetain()
+}
+
 c:: {
     Search()
 }
 
 v:: {
     Fingerprint()
+}
+
+^v:: {
+    AdvancedFingerprint()
 }
 
 
