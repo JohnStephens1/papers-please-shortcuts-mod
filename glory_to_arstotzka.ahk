@@ -13,6 +13,8 @@ shutter_pos := Relativy_pos([600, 400])
 tray_pos := Relativy_pos([400, 800])
 next_pos := Relativy_pos([600, 300])
 interrogate_pos := Relativy_pos([400, 900])
+time_pos := Relativy_pos([150, 950])
+weight_pos := Relativy_pos([600, 950])
 
 reason_pos := Relativy_pos([800, 400])
 reason_stamp_pos := Relativy_pos([800, 600])
@@ -23,6 +25,8 @@ fingerprint_from_person_pos := Relativy_pos([370, 800])
 fingerprint_goal_pos := Relativy_pos([1200, 550])
 fingerprint_result_pos := Relativy_pos([1200, 800])
 fingerprint_output_pos := Relativy_pos([1500, 700])
+
+in_inspect_mode := false
 
 
 ; screen helper functions
@@ -113,6 +117,7 @@ MoveToDeskAndGoBack() {
 }
 
 ToggleInspect() {
+    global in_inspect_mode := !in_inspect_mode
     ClickReturn(inspect_pos)
 }
 
@@ -223,6 +228,35 @@ AdvancedFingerprint() {
 }
 
 
+EnterInspectAndCompareWith(item_pos) {
+    if in_inspect_mode {
+        ToggleInspect()
+        Sleep(100)
+    }
+
+    ToggleInspect()
+    Click()
+    Sleep(50)
+    ClickReturn(item_pos)
+}
+
+ManualInInspectModeToggle() {
+    global in_inspect_mode := !in_inspect_mode
+}
+
+CompareWithTime() {
+    EnterInspectAndCompareWith(time_pos)
+}
+
+CompareWithPerson() {
+    EnterInspectAndCompareWith(person_pos)
+}
+
+CompareWithWeight() {
+    EnterInspectAndCompareWith(weight_pos)
+}
+
+
 ; keybinds
 Space:: {
     ToggleInspect()
@@ -287,6 +321,23 @@ v:: {
 
 ^v:: {
     AdvancedFingerprint()
+}
+
+
+F1:: {
+    ManualInInspectModeToggle()
+}
+
+1:: {
+    CompareWithTime()
+}
+
+2:: {
+    CompareWithPerson()
+}
+
+3:: {
+    CompareWithWeight()
 }
 
 
