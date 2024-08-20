@@ -306,6 +306,10 @@ y:: {
     Reason()
 }
 
+z:: {
+    Reason()
+}
+
 x:: {
     Detain()
 }
