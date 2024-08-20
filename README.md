@@ -34,7 +34,7 @@ There are several shortcuts to make many of the actions in the game a lot more s
 
 <br>
 
-- y: Reason - denies and provides reason to the currently hovered over document
+- y (and z): Reason - denies and provides reason to the currently hovered over document
 - x: Detain - detains the current individual
 - ctrl+x: AdvancedDetain - detains the current individual and calls in the next person afterwards (provided they don't have special dialogue)
 - c: Search - starts the search (to check for contraband or assure gender etc.)
