@@ -1,4 +1,6 @@
 ; variables
+window_title := "PapersPlease"
+
 my_screen_dim := [1920, 1080]
 current_screen_dim := [A_ScreenWidth, A_ScreenHeight]
 
@@ -261,6 +263,7 @@ CompareWithWeight() {
 
 
 ; keybinds
+#HotIf WinActive(window_title)
 Space:: {
     ToggleInspect()
 }
@@ -346,6 +349,7 @@ F1:: {
 3:: {
     CompareWithWeight()
 }
+#HotIf
 
 
 +Escape:: {
